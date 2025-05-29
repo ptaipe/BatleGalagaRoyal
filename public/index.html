@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Galaga War Arena</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fuente personalizada utilizada de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    <!-- Estilos -->
+    <link rel="stylesheet" href="./styles/menu.css">
+    <!-- SFX -->
+    <audio id="inputEnter" src="./assets/sounds/input_enter.ogg" preload="auto"></audio>
+    <audio id="inputLeave" src="./assets/sounds/input_leave.ogg" preload="auto"></audio>
+    <audio id="hoverSound" src="./assets/sounds/hover.ogg" preload="auto"></audio>
+    <audio id="clickDownSound" src="./assets/sounds/click_down.ogg" preload="auto"></audio>
+    <audio id="clickUpSound" src="./assets/sounds/click_up.ogg" preload="auto"></audio>
+    <audio id="typeSound" src="./assets/sounds/type.ogg" preload="auto"></audio>
+    <!-- Musica de fondo -->
+    <audio id="bgmSound" src="./assets/sounds/bgm_menu.ogg" preload="auto"></audio>
+</head>
+
+<body>
+    <div class="game-menu">
+        <h1 class="game-title">GALAGA WAR ARENA</h1>
+        <div class="container">
+
+            <div class="player-form">
+                <h2>¡Prepárate para la batalla!</h2>
+                <input type="text" id="playerName" placeholder="Ingresa tu nombre de piloto" maxlength="15" required>
+
+                <div class="skin-selection">
+                    <h3>Selecciona tu nave</h3>
+                    <div class="skin-options">
+                        <img src="./assets/skins/ship1.png" class="skin-option selected" data-skin="ship1.png"
+                            alt="Nave 1">
+                        <img src="./assets/skins/ship2.png" class="skin-option" data-skin="ship2.png" alt="Nave 2">
+                        <img src="./assets/skins/ship3.png" class="skin-option" data-skin="ship3.png" alt="Nave 3">
+                        <img src="./assets/skins/ship4.png" class="skin-option" data-skin="ship4.png" alt="Nave 4">
+                        <div class="skin-option custom-skin" id="customSkinButton">
+                            <img alt="Nave Personalizada" id="customSkinImage" style="display: none;">
+                            <p>Personalizar</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="button play-button" id="playButton">¡JUGAR AHORA!</button>
+                <button class="button secondary" id="playMusicButton">> Activar Música</button>
+            </div>
+
+            <div class="instructions">
+                <h3>Controles</h3>
+                <p><span>W, A, S, D</span> para moverte</p>
+                <p><span>Barra Espaciadora</span> para disparar</p>
+                <p><span>R</span> para recargar manualmente</p>
+                <p><span>ESC</span> para pausar el juego</p>
+                <h3>Créditos</h3>
+                <p><span>Ideado por</span> Paulo Taipe</p>
+                <p><a href="https://www.linkedin.com/in/soyelseba-/"><span>Desarrollado por</span> Sebastian Morales</a>
+                </p>
+                <p><a href="https://davidkbd.itch.io/cosmic-journey-space-themed-music-pack"><span>Musica del menú
+                            por</span> @DavidKBD</a></p>
+                <p><span>Sprites por</span> Kenney.nl y SoyElSeba_</p>
+                <p><span>Sonidos por</span> Kenney.nl</p>
+                <p><span>Inspirado en</span> Galaga</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="skinModal">
+        <div class="modal-content">
+            <div class="canvas-container">
+                <h3>Diseña tu nave</h3>
+                <div class="canvas-wrapper">
+                    <!-- capa de dibujo -->
+                    <canvas id="skinCanvas" width="250" height="250"></canvas>
+                    <!-- capa de grid -->
+                    <canvas id="gridCanvas" width="250" height="250"></canvas>
+                </div>
+                <div class="canvas-tools">
+                    <input type="color" id="colorPicker" class="color-picker" value="#ffffff">
+                    <button class="button secondary" id="eraserButton">Borrador</button>
+                    <button class="button secondary" id="clearButton">Limpiar</button>
+                    <!-- Nuevo botón de cubeta -->
+                    <button class="button secondary" id="bucketButton">Cubeta</button>
+                    <!-- Control de tamaño -->
+                    <input disabled type="number" id="brushSize" min="1" max="50" value="24">
+                </div>
+                <div class="modal-buttons">
+                    <button class="button" id="saveSkinButton">Guardar Diseño</button>
+                    <button class="button secondary" id="cancelSkinButton">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Lógica del menú -->
+    <script type="module" src="./scripts/menu/index.js"></script>
+    <script src="./scripts/menu/soundsHandler.js"></script>
+    <script src="./scripts/menu/starsBg.js"></script>
+</body>
+
+</html>
